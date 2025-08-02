@@ -21,3 +21,6 @@ urlrewrite*
 *.zip
 *.pdf
 _not_used__*
+
+*.tmp
+*.tar.gz

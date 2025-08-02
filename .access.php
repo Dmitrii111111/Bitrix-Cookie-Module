@@ -1,7 +1,4 @@
 <?
-RedirectMatch 404 /\.git
-RedirectMatch 404 /\.gitignore
-
 $PERM["personal"]["7"]="W";
 $PERM["catalog"]["7"]="W";
 $PERM["news"]["7"]="W";
