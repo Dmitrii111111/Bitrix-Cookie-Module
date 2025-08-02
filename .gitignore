@@ -1,0 +1,23 @@
+# VSCode Settings
+/.vscode
+
+# // Bitrix
+/bitrix
+/upload
+/sites
+/markup
+/vendor
+/log
+urlrewrite*
+
+# Deny *.xml in root
+/*.xml
+
+# // Bitrix
+
+*.tar
+*.gz
+*.tgz
+*.zip
+*.pdf
+_not_used__*
