@@ -18,9 +18,9 @@ if (!$userName)
 	<?endif?>
 </script>
 <?
-if (is_string($_REQUEST["backurl"]) && mb_strpos($_REQUEST["backurl"], "/") === 0)
+if (isset($_REQUEST["backurl"]) && is_string($_REQUEST["backurl"]) && mb_strpos($_REQUEST["backurl"], "/") === 0)
 {
-	LocalRedirect($_REQUEST["backurl"]);
+    LocalRedirect($_REQUEST["backurl"]);
 }
 
 $APPLICATION->SetTitle("Вход на сайт");
