@@ -94,21 +94,34 @@
 
     cookieText.innerHTML = options.text
 
-    // Вставляем или img, или span в зависимости от textButton
-    let closeElement
-    if (options.textButton && options.textButton.trim() !== '') {
-      closeElement = document.createElement('span')
-      closeElement.classList.add('button')
-      closeElement.textContent = options.textButton
-    } else {
-      closeElement = document.createElement('img')
-      closeElement.src = '/bitrix/images/ushakov.cookie/close.svg'
-    }
-    closeElement.onclick = sendCookieRequestAndRemoveElement
+    // блок с кнопками
+    const actionsWrapper = document.createElement('div')
+    actionsWrapper.className = 'ushakov-cookie__actions'
+
+    const acceptButton = document.createElement('button')
+    acceptButton.type = 'button'
+    acceptButton.className = 'ushakov-cookie__accept'
+    acceptButton.textContent = (options.textButton && options.textButton.trim() !== '') ? options.textButton : 'Принять'
+    acceptButton.setAttribute('aria-label', 'Принять cookies')
+    acceptButton.onclick = sendCookieRequestAndRemoveElement
+
+    const closeIcon = document.createElement('button')
+    closeIcon.type = 'button'
+    closeIcon.className = 'ushakov-cookie__close'
+    closeIcon.setAttribute('aria-label', 'Закрыть уведомление')
+    const closeImg = document.createElement('img')
+    closeImg.src = '/bitrix/images/ushakov.cookie/close.svg'
+    closeImg.alt = ''
+    closeImg.setAttribute('aria-hidden', 'true')
+    closeIcon.appendChild(closeImg)
+    closeIcon.onclick = hideCookieBanner
+
+    actionsWrapper.appendChild(acceptButton)
+    actionsWrapper.appendChild(closeIcon)
 
     // Собираем и вставляем в документ
     innerDiv.appendChild(cookieText)
-    innerDiv.appendChild(closeElement)
+    innerDiv.appendChild(actionsWrapper)
     cookieDiv.appendChild(innerDiv)
     document.body.appendChild(cookieDiv)
   }
@@ -137,5 +150,12 @@
         element.remove()
       }
     })
+  }
+
+  function hideCookieBanner () {
+    const element = document.getElementById('ushakov-cookie-wrap')
+    if (element) {
+      element.remove()
+    }
   }
 })();
