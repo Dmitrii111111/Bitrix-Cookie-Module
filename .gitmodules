@@ -1,0 +1,3 @@
+[submodule "local/modules/ushakov.cookie"]
+	path = local/modules/ushakov.cookie
+	url = git@github.com:Dmitrii111111/ushakov.cookie.git
