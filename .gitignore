@@ -9,7 +9,7 @@
 /vendor
 /log
 urlrewrite*
-
+/local/modules/ushakov.cookie
 # Deny *.xml in root
 /*.xml
 
